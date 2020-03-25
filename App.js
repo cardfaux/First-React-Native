@@ -11,14 +11,14 @@ export default function App() {
 	const addGoalHandler = (goalTitle) => {
 		setCourseGoals((currentGoals) => [
 			...currentGoals,
-			{ key: Math.random().toString(), value: goalTitle }
+			{ id: Math.random().toString(), value: goalTitle }
 		]);
 		setIsAddMode(false);
 	};
 
 	const removeGoalHandler = (goalId) => {
 		setCourseGoals((currentGoals) => {
-			return currentGoals.filter((goal) => goal.key !== goalId);
+			return currentGoals.filter((goal) => goal.id !== goalId);
 		});
 	};
 
@@ -38,7 +38,7 @@ export default function App() {
 				data={courseGoals}
 				renderItem={(itemData) => (
 					<GoalItem
-						id={itemData.item.key}
+						id={itemData.item.id}
 						onDelete={removeGoalHandler}
 						title={itemData.item.value}
 					/>
